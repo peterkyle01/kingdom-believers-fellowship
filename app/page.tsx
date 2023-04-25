@@ -1,124 +1,273 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import Image from "next/image";
+import Link from "next/link";
+import homePic from "../public/home.jpg";
+import onlinePic from "../public/online.webp";
+import pasterPic from "../public/pasterPic.jpg";
+import logo from "../public/logo.png";
+import dynamic from "next/dynamic";
+import whoWeArePic from "../public/whoWeAre.jpg";
+import menFellowshipPic from "../public/menFellowship.jpg";
+import womenFellowshipPic from "../public/womenFellowship.jpg";
+import youthFellowshipPic from "../public/youthFellowship.jpg";
+import sermonsPic from "../public/sermons.jpg";
+import galleryPic from "../public/gallery.jpg";
+import biblePic from "../public/bible.jpg";
+import { videoArray } from "./sermons/page";
+import BibleForm from "./components/online_bible/BibleForm";
+import HomeIcons from "./components/HomeIcons";
 
-const inter = Inter({ subsets: ['latin'] })
+const VideoPlayer = dynamic(() => import("./components/VideoPlayer"), {
+  ssr: false,
+});
 
-export default function Home() {
+export default async function Home() {
+  const videos = await videoArray();
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
+    <main className="w-screen h-auto bg-gray-100 text-gray-700">
+      <section className="w-full h-96 bg-black relative ">
         <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
+          src={homePic}
+          alt="Home Page"
+          fill
           priority
+          sizes="max-width:2500px,max-height:1800"
         />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+        <div className="absolute bottom-2 left-6 w-3/4 text-white">
+          <h3 className="text-sm my-4 tracking-widest">
+            JOIN US ONLINE OR IN PERSON
+          </h3>
+          <h1 className="text-3xl">SUNDAY,9-10:30AM</h1>
+          <h1 className="text-3xl">WEDNESDAY,7PM</h1>
+          <div className="w-full h-12 flex my-4 text-yellow-500">
+            <HomeIcons />
+          </div>
+        </div>
+      </section>
+      <section className="w-full h-auto relative flex flex-col justify-center items-center sm:flex-row lg:h-100 ">
+        <div className="w-full h-96 flex flex-col justify-center items-start p-4">
+          <h1 className="my-4 text-4xl font-black text-yellow-500 lg:text-6xl font-roboto ">
+            Kingdom Believers Fellowship
+          </h1>
+          <h3 className="lg:text-2xl">
+            Welcome to our church! We are a community of believers who love God
+            and seek to follow His will in our lives. We invite you to join us
+            for worship, fellowship, and service. We hope that you will find our
+            church to be a place where you can grow in your faith and experience
+            God's love and grace.
+          </h3>
+        </div>
+        <div className="w-full h-96 flex justify-center items-center my-2 sm:m-0 lg:px-4">
+          <VideoPlayer name={"https://www.youtube.com/watch?v=OkgVDLUNlZM"} />
+        </div>
+      </section>
+      <section className="w-full h-auto flex flex-col gap-1 p-2">
+        <div className="w-full h-96 flex flex-col gap-1 sm:flex-row sm:h-80">
+          <div className="w-full h-96 flex justify-center items-center sm:h-80 p-2 relative rounded-md overflow-hidden hover:transform-gpu hover:scale-95 hover:duration-1000 group">
+            <h3 className=" z-40 text-white font-bold tracking-widest text-3xl group-hover:transform group-hover:scale-125 group-hover:duration-1000 ">
+              WHO WE ARE
+            </h3>
+            <Link
+              href="/about"
+              className="z-30 w-full h-full absolute bg-transparent group-hover:bg-gray-900/30"></Link>
+            <Image
+              src={whoWeArePic}
+              alt="#"
+              fill
+              sizes="max-width:2500px,max-height:1800"
+            />
+          </div>
+          <div className="w-full h-96 flex justify-center items-center sm:h-80 p-2 relative rounded-md overflow-hidden hover:transform-gpu hover:scale-95 hover:duration-1000 group">
+            <h3 className=" z-40 text-white font-bold tracking-widest text-3xl group-hover:transform group-hover:scale-125 group-hover:duration-1000 ">
+              MEN FELLOWSHIP
+            </h3>
+            <Link
+              href="/men_fellowship"
+              className="z-30 w-full h-full absolute bg-transparent group-hover:bg-gray-900/30"></Link>
+            <Image
+              src={menFellowshipPic}
+              alt="#"
+              fill
+              sizes="max-width:2500px,max-height:1800"
+            />
+          </div>
+        </div>
+        <div className="w-full h-96  flex flex-col gap-1 sm:flex-row sm:h-80">
+          <div className="w-full h-96 flex justify-center items-center sm:h-80 p-2 relative rounded-md overflow-hidden hover:transform-gpu hover:scale-95 hover:duration-1000 group">
+            <h3 className=" z-40 text-white font-bold tracking-widest text-3xl group-hover:transform group-hover:scale-125 group-hover:duration-1000 ">
+              WOMEN FELLOWSHIP
+            </h3>
+            <Link
+              href="/women_fellowship"
+              className="z-30 w-full h-full absolute bg-transparent group-hover:bg-gray-900/30"></Link>
+            <Image
+              src={womenFellowshipPic}
+              alt="#"
+              fill
+              sizes="max-width:2500px,max-height:1800"
+            />
+          </div>
+          <div className="w-full h-96 flex justify-center items-center sm:h-80 p-2 relative rounded-md overflow-hidden hover:transform-gpu hover:scale-95 hover:duration-1000 group">
+            <h3 className=" z-40 text-white font-bold tracking-widest text-3xl group-hover:transform group-hover:scale-125 group-hover:duration-1000 ">
+              YOUTH FELLOWSHIP
+            </h3>
+            <Link
+              href="/youth_fellowship"
+              className="z-30 w-full h-full absolute bg-transparent group-hover:bg-gray-900/30"></Link>
+            <Image
+              src={youthFellowshipPic}
+              alt="#"
+              fill
+              sizes="max-width:2500px,max-height:1800"
+            />
+          </div>
+        </div>
+        <div className="w-full h-96  flex flex-col gap-1 sm:flex-row sm:h-80">
+          <div className="w-full h-96 flex justify-center items-center sm:h-80 p-2 relative rounded-md overflow-hidden hover:transform-gpu hover:scale-95 hover:duration-1000 group">
+            <h3 className=" z-40 text-white font-bold tracking-widest text-3xl group-hover:transform group-hover:scale-125 group-hover:duration-1000 ">
+              SERMONS
+            </h3>
+            <Link
+              href="/sermons"
+              className="z-30 w-full h-full absolute bg-transparent group-hover:bg-gray-900/30"></Link>
+            <Image
+              src={sermonsPic}
+              alt="#"
+              fill
+              sizes="max-width:2500px,max-height:1800"
+            />
+          </div>
+          <div className="w-full h-96 flex justify-center items-center sm:h-80 p-2 relative rounded-md overflow-hidden hover:transform-gpu hover:scale-95 hover:duration-1000 group">
+            <h3 className=" z-40 text-white font-bold tracking-widest text-3xl group-hover:transform group-hover:scale-125 group-hover:duration-1000 ">
+              GALLERY
+            </h3>
+            <Link
+              href="/gallery"
+              className="z-30 w-full h-full absolute bg-transparent group-hover:bg-gray-900/30"></Link>
+            <Image
+              src={galleryPic}
+              alt="#"
+              fill
+              sizes="max-width:2500px,max-height:1800"
+            />
+          </div>
+        </div>
+      </section>
+      <section className="w-full h-auto relative flex flex-col justify-center items-center sm:flex-row lg:h-100">
+        <div className="w-full h-96 flex flex-col justify-center items-start p-4">
+          <div className="w-full h-24 relative flex justify-center items-center">
+            <Image
+              src={logo}
+              width={100}
+              height={100}
+              alt="logo"
+              className="animate-bounce"
+            />
+          </div>
+          <h1 className="my-4 text-4xl font-black text-black lg:text-6xl font-roboto">
+            Watch the latest message!
+          </h1>
+          <h3 className="lg:text-2xl">
+            Subscribe to our{" "}
+            <Link
+              className="text-yellow-500 animate-pulse"
+              href="https://www.youtube.com/@kingdombelieversfellowship3872">
+              Youtube
+            </Link>{" "}
+            channel and stay up to date with weekly content!
+          </h3>
+        </div>
+        <div className="w-full h-96 flex justify-center items-center my-2 sm:m-0 lg:px-4">
+          <VideoPlayer name={`https://www.youtube.com/watch?v=${videos[0]}`} />
+        </div>
+      </section>
+      <section className="w-full h-auto relative flex flex-col items-center bg-black text-white py-8 lg:h-100">
+        <div className="w-full h-12 flex justify-start items-center p-4 sm:h-24">
+          <h3 className="sm:text-xl">USE OUR ONLINE BIBLE BELOW</h3>
+        </div>
+        <div className="w-full h-96 flex p-4 justify-start items-center sm:px-24 lg:px-60">
+          <h1 className="absolute text-6xl font-roboto tracking-widest z-40">
+            ESV <br />
+            ONLINE <br />
+            FREE <br />
+            BIBLE
+          </h1>
+          <div className="w-1/4 h-full bg-transparent"></div>
+          <div className="w-3/4 h-full relative ">
+            <Image
+              src={biblePic}
+              alt="Visit Page"
+              fill
+              sizes="max-width:2500px,max-height:1800"
+            />
+          </div>
+        </div>
+        <div className="w-3/4 h-auto">
+          <div className="w-full h-auto text-white">
+            <BibleForm />
+          </div>
+        </div>
+      </section>
+      <section className="w-full h-108 relative p-4 flex flex-col sm:flex-row lg:h-100">
+        <div className="w-full h-60 flex flex-col justify-center items-center lg:h-full">
+          <div className="w-full h-20 relative lg:h-1/4">
+            <Image
+              src={onlinePic}
+              alt="online image"
+              fill
+              sizes="max-width:2500px,max-height:1800"
+            />
+          </div>
+          <div className="w-full h-40 flex flex-col justify-evenly items-center ">
+            <div className="w-full h-30">
+              Watch LIVE through our Website,Youtube,and Facebook Live!
+            </div>
+            <div className="w-full h-10 text-yellow-500 text-xl">
+              SUNDAY AT 9AM AND 10:30AM & <br /> WEDNESDAY AT 7PM
+            </div>
+          </div>
+        </div>
+        <div className="w-full h-60 flex flex-col justify-evenly items-center lg:h-full lg:py-24">
+          <button className="outline w-3/4 h-1/4 rounded text-sm sm:text-lg text-white bg-black hover:bg-white hover:text-black sm:mx-4">
+            WATCH ONLINE
+          </button>
+          <button className="outline w-3/4 h-1/4 rounded text-sm sm:text-lg text-white bg-black hover:bg-white hover:text-black sm:mx-4">
+            <Link href="https://www.youtube.com/@kingdombelieversfellowship3872">
+              WATCH ON YOUTUBE
+            </Link>
+          </button>
+          <button className="outline w-3/4 h-1/4 rounded text-sm sm:text-lg text-white bg-black hover:bg-white hover:text-black sm:mx-4">
+            WATCH ON FACEBOOK
+          </button>
+        </div>
+      </section>
+      <section className="w-full h-auto py-4 flex flex-col sm:flex-row sm:h-96 lg:h-100">
+        <div className="w-full h-96 relative sm:h-full sm:ml-2">
+          <Image
+            src={pasterPic}
+            alt="Paster Pic"
+            fill
+            sizes="max-width:2500px,max-height:1800"
+          />
+        </div>
+        <div className="w-full h-auto py-4 sm:h-1/2 lg:h-full">
+          <div className="w-full h-1/4 py-2 flex justify-center items-center">
+            <h1 className="text-3xl font-anton ">OUR LEAD PASTOR</h1>
+          </div>
+          <div className="w-full h-6 flex justify-center items-center my-4 sm:m-0 lg:h-12">
+            hello
+          </div>
+          <div className="w-full h-auto p-2 flex justify-center items-center sm:p-8">
+            <h3 className="lg:text-xl text-slate-600">
+              Apostle Isaac Ngige is the Lead Pastor of Kingdom Believers
+              Fellowship Church in Eldoret ,Kenya. He has been in pastoral
+              ministry for over 20 years. Apostle Isaac Ngige has a rich history
+              with Kingdom Believers Fellowship Church, going back to 2007 when
+              he was in Sango doing his pastoral duties.
+            </h3>
+          </div>
+        </div>
+      </section>
+      <section className="w-full h-4"></section>
     </main>
-  )
+  );
 }

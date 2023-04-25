@@ -27,7 +27,7 @@ export async function videoArray() {
   const data = await getData();
   const videoSnippets = data.items;
 
-  videoSnippets.map((videoSnippet: []) => {
+  videoSnippets.map((videoSnippet: [snippet:string]) => {
     return videoSnippetsArray.push(videoSnippet.snippet);
   });
 

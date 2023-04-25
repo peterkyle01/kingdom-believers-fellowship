@@ -13,7 +13,6 @@ import sermonsPic from "../public/sermons.jpg";
 import galleryPic from "../public/gallery.jpg";
 import biblePic from "../public/bible.jpg";
 import { videoArray } from "./sermons/page";
-import BibleForm from "./components/online_bible/BibleForm";
 import HomeIcons from "./components/HomeIcons";
 
 const VideoPlayer = dynamic(() => import("./components/VideoPlayer"), {
@@ -203,7 +202,7 @@ export default async function Home() {
         </div>
         <div className="w-3/4 h-auto">
           <div className="w-full h-auto text-white">
-            <BibleForm />
+            
           </div>
         </div>
       </section>

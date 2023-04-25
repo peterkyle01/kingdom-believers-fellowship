@@ -27,15 +27,15 @@ export async function videoArray() {
   const data = await getData();
   const videoSnippets = data.items;
 
-  videoSnippets.map((videoSnippet: any[]) => {
+  videoSnippets.map((videoSnippet: []) => {
     return videoSnippetsArray.push(videoSnippet.snippet);
   });
 
-  videoSnippetsArray.map((eachVideoSnippetsArray: any[]) => {
+  videoSnippetsArray.map((eachVideoSnippetsArray: []) => {
     return videoResourceIdArray.push(eachVideoSnippetsArray.resourceId);
   });
 
-  videoResourceIdArray.map((eachVideoResourceIDArray: any[]) => {
+  videoResourceIdArray.map((eachVideoResourceIDArray: []) => {
     return videoIDArray.push(eachVideoResourceIDArray.videoId);
   });
 

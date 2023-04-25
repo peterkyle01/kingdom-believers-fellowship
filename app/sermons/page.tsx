@@ -2,6 +2,7 @@
 import Image from "next/image";
 import sermonsPic from "../../public/sermons.jpg";
 import dynamic from "next/dynamic";
+import { Item, ResourceID, Snippet } from "../types";
 const playlistId = process.env.PLAYLIST_ID;
 const apiKey = process.env.API_KEY;
 
@@ -21,21 +22,21 @@ async function getData() {
 }
 
 export async function videoArray() {
-  const videoSnippetsArray: any[] = [];
-  const videoResourceIdArray: any[] = [];
+  const videoSnippetsArray:Snippet[] = [];
+  const videoResourceIdArray: ResourceID[] = [];
   const videoIDArray: string [] = [];
   const data = await getData();
   const videoSnippets = data.items;
 
-  videoSnippets.map((videoSnippet: [snippet:string]) => {
+  videoSnippets.map((videoSnippet:Item) => {
     return videoSnippetsArray.push(videoSnippet.snippet);
   });
 
-  videoSnippetsArray.map((eachVideoSnippetsArray: []) => {
+  videoSnippetsArray.map((eachVideoSnippetsArray: Snippet) => {
     return videoResourceIdArray.push(eachVideoSnippetsArray.resourceId);
   });
 
-  videoResourceIdArray.map((eachVideoResourceIDArray: []) => {
+  videoResourceIdArray.map((eachVideoResourceIDArray:ResourceID ) => {
     return videoIDArray.push(eachVideoResourceIDArray.videoId);
   });
 

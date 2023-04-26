@@ -61,7 +61,7 @@ const page = async () => {
         </h1>
       </section>
       <section className="w-full h-auto flex flex-wrap">
-        {videos.map((video) => (
+        {videos && videos.map((video) => (
           <div className="w-full h-80 sm:w-1/2" key={video}>
             <VideoPlayer name={`https://www.youtube.com/watch?v=${video}`} />
           </div>

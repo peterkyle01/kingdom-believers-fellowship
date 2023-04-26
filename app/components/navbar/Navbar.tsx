@@ -11,7 +11,6 @@ import { motion ,AnimatePresence} from "framer-motion";
 const links = [
   { name: "Home", url: "/", icon: <></> },
   { name: "About", url: "/about", icon: <></> },
-  { name: "Sermons", url: "/sermons", icon: <></> },
   { name: "Gallery", url: "/gallery", icon: <></> },
 ];
 

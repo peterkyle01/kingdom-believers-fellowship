@@ -12,7 +12,6 @@ import youthFellowshipPic from "../public/youthFellowship.jpg";
 import sermonsPic from "../public/sermons.jpg";
 import galleryPic from "../public/gallery.jpg";
 import biblePic from "../public/bible.jpg";
-// import { videoArray } from "./sermons/page";
 import HomeIcons from "./components/HomeIcons";
 
 const VideoPlayer = dynamic(() => import("./components/VideoPlayer"), {
@@ -20,7 +19,6 @@ const VideoPlayer = dynamic(() => import("./components/VideoPlayer"), {
 });
 
 export default async function Home() {
-  // const videos = await videoArray();
   return (
     <main className="w-screen h-auto bg-gray-100 text-gray-700">
       <section className="w-full h-96 bg-black relative ">

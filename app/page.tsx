@@ -12,7 +12,7 @@ import youthFellowshipPic from "../public/youthFellowship.jpg";
 import sermonsPic from "../public/sermons.jpg";
 import galleryPic from "../public/gallery.jpg";
 import biblePic from "../public/bible.jpg";
-import { videoArray } from "./sermons/page";
+// import { videoArray } from "./sermons/page";
 import HomeIcons from "./components/HomeIcons";
 
 const VideoPlayer = dynamic(() => import("./components/VideoPlayer"), {
@@ -20,7 +20,7 @@ const VideoPlayer = dynamic(() => import("./components/VideoPlayer"), {
 });
 
 export default async function Home() {
-  const videos = await videoArray();
+  // const videos = await videoArray();
   return (
     <main className="w-screen h-auto bg-gray-100 text-gray-700">
       <section className="w-full h-96 bg-black relative ">
@@ -176,7 +176,7 @@ export default async function Home() {
           </h3>
         </div>
         <div className="w-full h-96 flex justify-center items-center my-2 sm:m-0 lg:px-4">
-          <VideoPlayer name={`https://www.youtube.com/watch?v=${videos && videos[0]}`} />
+          {/* <VideoPlayer name={`https://www.youtube.com/watch?v=${videos && videos[0]}`} /> */}
         </div>
       </section>
       <section className="w-full h-auto relative flex flex-col items-center bg-black text-white py-8 lg:h-100">

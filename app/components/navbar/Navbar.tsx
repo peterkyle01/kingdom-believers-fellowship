@@ -6,11 +6,12 @@ import { useEffect, useRef, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { BiChevronDown } from "react-icons/bi";
 import logo from "../../../public/logo.png";
-import { motion ,AnimatePresence} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
   { name: "Home", url: "/", icon: <></> },
   { name: "About", url: "/about", icon: <></> },
+  { name: "Sermons", url: "/sermons", icon: <></> },
   { name: "Gallery", url: "/gallery", icon: <></> },
 ];
 
@@ -21,7 +22,6 @@ const ministriesLinks = [
 ];
 
 const Navbar = () => {
- 
   const [showMenu, setShowMenu] = useState(false);
   const [openMinistries, setOpenMinistries] = useState(false);
   const [openSmMinistries, setOpenSmMinistries] = useState(false);
@@ -33,7 +33,7 @@ const Navbar = () => {
       if (!menuRef.current?.contains(e.target as Node)) {
         setShowMenu(false);
         setOpenMinistries(false);
-        setOpenSmMinistries(false)
+        setOpenSmMinistries(false);
       }
     };
 
@@ -148,7 +148,7 @@ const Navbar = () => {
           {links.map((link) => (
             <Link className="px-1" href={link.url} key={link.name}>
               <span
-                className="sm:flex sm:justify-start sm:items-center text-yellow-500 hover:text-white"
+                className="sm:flex sm:justify-start sm:items-center text-white hover:text-yellow-500"
                 onClick={() => {
                   setShowMenu(false);
                 }}>
@@ -162,7 +162,7 @@ const Navbar = () => {
               setOpenSmMinistries(false);
               setOpenSmMinistries(!openSmMinistries);
             }}
-            className="cursor-pointer sm:flex sm:justify-start sm:items-center text-yellow-500 hover:text-white">
+            className="cursor-pointer sm:flex sm:justify-start sm:items-center text-white hover:text-yellow-500 ">
             <li>Ministries</li>
             <i>
               <BiChevronDown size={20} />

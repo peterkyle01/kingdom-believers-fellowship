@@ -13,12 +13,48 @@ import sermonsPic from "../public/sermons.jpg";
 import galleryPic from "../public/gallery.jpg";
 import biblePic from "../public/bible.jpg";
 import HomeIcons from "./components/HomeIcons";
+import { YoutubeData } from "./types";
 
+const playlistId = process.env.PLAYLIST_ID;
+const apiKey = process.env.API_KEY;
 const VideoPlayer = dynamic(() => import("./components/VideoPlayer"), {
   ssr: false,
 });
 
+const getData = async () => {
+  try {
+    const res = await fetch(
+      `https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${playlistId}&key=${apiKey}&part=snippet&maxResults=50`,
+      { cache: "no-store" }
+    );
+
+    if (!res.ok) {
+      return null;
+    }
+
+    return res.json();
+  } catch {
+    return null;
+  }
+};
+
+const videosArray = async () => {
+  const videoArray: string[] = [];
+
+  const data: YoutubeData | null = await getData();
+
+  if (data != null) {
+    const { items } = data;
+    items.map((item: { snippet: { resourceId: { videoId: string } } }) => {
+      videoArray.push(item.snippet.resourceId.videoId);
+    });
+  }
+
+  return videoArray;
+};
+
 export default async function Home() {
+  const videos = await videosArray()
   return (
     <main className="w-screen h-auto bg-gray-100 text-gray-700">
       <section className="w-full h-96 bg-black relative ">
@@ -174,34 +210,7 @@ export default async function Home() {
           </h3>
         </div>
         <div className="w-full h-96 flex justify-center items-center my-2 sm:m-0 lg:px-4">
-          {/* <VideoPlayer name={`https://www.youtube.com/watch?v=${videos && videos[0]}`} /> */}
-        </div>
-      </section>
-      <section className="w-full h-auto relative flex flex-col items-center bg-black text-white py-8 lg:h-100">
-        <div className="w-full h-12 flex justify-start items-center p-4 sm:h-24">
-          <h3 className="sm:text-xl">USE OUR ONLINE BIBLE BELOW</h3>
-        </div>
-        <div className="w-full h-96 flex p-4 justify-start items-center sm:px-24 lg:px-60">
-          <h1 className="absolute text-6xl font-roboto tracking-widest z-40">
-            ESV <br />
-            ONLINE <br />
-            FREE <br />
-            BIBLE
-          </h1>
-          <div className="w-1/4 h-full bg-transparent"></div>
-          <div className="w-3/4 h-full relative ">
-            <Image
-              src={biblePic}
-              alt="Visit Page"
-              fill
-              sizes="max-width:2500px,max-height:1800"
-            />
-          </div>
-        </div>
-        <div className="w-3/4 h-auto">
-          <div className="w-full h-auto text-white">
-            
-          </div>
+          <VideoPlayer name={`https://www.youtube.com/watch?v=${videos[0]}`} />
         </div>
       </section>
       <section className="w-full h-108 relative p-4 flex flex-col sm:flex-row lg:h-100">
@@ -215,10 +224,10 @@ export default async function Home() {
             />
           </div>
           <div className="w-full h-40 flex flex-col justify-evenly items-center ">
-            <div className="w-full h-30">
+            <div className="w-full h-30 lg:text-2xl">
               Watch LIVE through our Website,Youtube,and Facebook Live!
             </div>
-            <div className="w-full h-10 text-yellow-500 text-xl">
+            <div className="w-full h-10 text-yellow-500 text-xl lg:text-4xl">
               SUNDAY AT 9AM AND 10:30AM & <br /> WEDNESDAY AT 7PM
             </div>
           </div>

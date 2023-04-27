@@ -20,7 +20,7 @@ const roboto = Roboto({
 
 export const metadata = {
   title: "Kingdom Believers Fellowship",
-  description: "kingdom believers fellowship church"
+  description: "kingdom believers fellowship church",
 };
 
 export default function RootLayout({

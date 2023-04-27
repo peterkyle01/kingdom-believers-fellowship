@@ -3,6 +3,7 @@ import Footer from "./components/footer/Footer";
 import NavbarContainer from "./components/navbar/NavbarContainer";
 import "./globals.css";
 import { Source_Sans_Pro,Roboto } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 
 const source_sans_pro = Source_Sans_Pro({
   weight:"400",
@@ -36,6 +37,7 @@ export default function RootLayout({
         <ScrollToTopButton/>
         {children}
         <Footer />
+        <Analytics/>
       </body>
     </html>
   );

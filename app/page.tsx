@@ -54,7 +54,7 @@ const videosArray = async () => {
 };
 
 export default async function Home() {
-  const videos = await videosArray()
+  const videos = await videosArray();
   return (
     <main className="w-screen h-auto bg-gray-100 text-gray-700">
       <section className="w-full h-96 bg-black relative ">
@@ -260,7 +260,7 @@ export default async function Home() {
             <h1 className="text-3xl font-anton ">OUR LEAD PASTOR</h1>
           </div>
           <div className="w-full h-6 flex justify-center items-center my-4 sm:m-0 lg:h-12">
-            hello
+            <h1 className="text-xl text-yellow-500">APOSTLE DR. ISAAC NGIGE</h1>
           </div>
           <div className="w-full h-auto p-2 flex justify-center items-center sm:p-8">
             <h3 className="lg:text-xl text-slate-600">
@@ -268,7 +268,10 @@ export default async function Home() {
               Fellowship Church in Eldoret ,Kenya. He has been in pastoral
               ministry for over 20 years. Apostle Isaac Ngige has a rich history
               with Kingdom Believers Fellowship Church, going back to 2007 when
-              he was in Sango doing his pastoral duties.
+              he was in Sango doing his pastoral duties
+              <Link className="text-yellow-500 text-lg p-1" href="apostle">
+                ...
+              </Link>
             </h3>
           </div>
         </div>

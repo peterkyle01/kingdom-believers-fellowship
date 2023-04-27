@@ -16,7 +16,7 @@ module.exports = {
         roboto: ["var(--font-roboto)"],
       },
       spacing:{
-        "100":"40rem"
+        "100":"30rem"
       }
     },
   },
